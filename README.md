@@ -1,214 +1,126 @@
 # WOTO - Wrath Of The Olympians
 
-## Final Year Project Deliverable
+Wrath Of The Olympians is a legacy Unity fighting game project originally created as a final year project and now partially modernized so it can open and run again in a current Unity editor.
 
-**Game Type:** 3D Fighting Game  
-**Engine:** Unity  
-**Status:** Modernized and ready for Unity upgrade
+## Current State
 
----
+- Original project version: Unity `5.1.2f1`
+- Current repo goal: make the project compile and run in modern Unity
+- Recommended editor target: Unity 6
+- Current gameplay state: playable prototype / recovery build
 
-## 🎮 About
+This repository is not a finished commercial game build. It is an upgraded legacy project with:
 
-WOTO (Wrath Of The Olympians) is a 3D fighting game developed as a Final Year Project. The game features character combat mechanics, animations, and multiple stages.
+- Unity 6 compatibility fixes for many old APIs
+- repaired build scene setup
+- a working main menu and stage flow
+- a rebuilt `stage 1` runtime arena
+- local two-player prototype combat
+- procedural placeholder fighters for Zeus and Ares
 
----
+## What Was Modernized
 
-## 📦 Current Status
+The repo now includes:
 
-### Version
-- **Original:** Alpha (Unity 5.1.2f1 - 2015)
-- **Current:** Modernized for Unity 2023 LTS / Unity 6
+- package/bootstrap fixes so `UnityEngine.UI` and runtime scene setup work in a newer editor
+- compatibility updates for old Standard Assets and editor scripts
+- runtime scene recovery helpers for camera and event system setup
+- a generated arena/combat slice for `stage 1`
+- HUD, health bars, timer, round flow, melee attacks, and a simple ultra move
 
-### Recent Updates (February 2026)
+Important: the project still contains old assets and legacy content. Some parts are modernized enough to run; others are still historic project content.
 
-✅ **Repository Cleaned**
-- Removed build files and auto-generated project files
-- Added proper .gitignore for Unity projects
+## Running The Project
 
-✅ **Scripts Modernized**
-- Updated controller scripts with modern code practices
-- Fixed deprecated API calls
-- Improved code readability and maintainability
+1. Clone the repository:
 
-✅ **Documentation Added**
-- [UPGRADE_GUIDE.md](UPGRADE_GUIDE.md) - Step-by-step Unity upgrade instructions
-- [MODERNIZATION_REPORT.md](MODERNIZATION_REPORT.md) - Detailed analysis of changes
+```bash
+git clone https://github.com/StefanosIr/WOTO.git
+cd WOTO
+```
 
----
+2. Open the project in Unity Hub.
 
-## 🚀 Getting Started
+3. Use Unity 6 if possible.
 
-### For Development
+4. Let Unity upgrade/import the project.
 
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/StefanosIr/WOTO.git
-   cd WOTO
-   ```
+5. Open one of these scenes:
+- `Assets/mainmenu.unity`
+- `Assets/stage 1.unity`
 
-2. **Open in Unity:**
-   - Install [Unity Hub](https://unity.com/download)
-   - Install Unity 2023 LTS (recommended) or Unity 6
-   - Add the project folder in Unity Hub
-   - Open the project (Unity will auto-upgrade from 5.1.2f1)
+6. Press Play.
 
-3. **First-time setup:**
-   - Let Unity import and convert all assets (may take several minutes)
-   - Check console for any warnings
-   - Test both scenes: `mainmenu.unity` and `stage 1.unity`
+If you want a standalone build:
 
-### For Playing
+1. Open `File > Build Settings` or `Build Profiles`
+2. Make sure these scenes are included:
+- `Assets/mainmenu.unity`
+- `Assets/stage 1.unity`
+3. Build and run
 
-**Note:** Build files are not included in the repository. To play:
+## Controls
 
-1. Open the project in Unity (see above)
-2. Go to `File > Build Settings`
-3. Add scenes to build:
-   - `Assets/mainmenu.unity`
-   - `Assets/stage 1.unity`
-4. Click `Build` and select output folder
-5. Run the generated executable
-
----
-
-## 🎯 Controls
+Current prototype controls:
 
 ### Player 1
-- **Move:** WASD
-- **Turn:** Q / E
-- **Jump:** Space
-- **Punch:** Left Mouse Button
-- **Kick:** Right Mouse Button
-- **Actions:** 1, 2, 3 keys
+- Move: `A / D`
+- Jump: `Space`
+- Punch: `Z`
+- Kick: `X`
+- Ultra: `C`
 
 ### Player 2
-- **Move:** Arrow Keys
-- **Turn:** [ / ]
-- **Jump:** (Custom button - check Input Manager)
-- **Punch:** (Numpad - check Input Manager)
-- **Kick:** (Numpad - check Input Manager)
-- **Actions:** ' (quote), ; (semicolon), 3
+- Move: `J / L`
+- Jump: `O`
+- Punch: `U`
+- Kick: `P`
+- Ultra: `M`
 
----
+## Scenes
 
-## 📁 Project Structure
+- `Assets/mainmenu.unity`
+  Current menu/start scene
 
-```
-WOTO/
-├── Assets/
-│   ├── Animations/          # Character animations
-│   ├── Fonts/               # UI fonts
-│   ├── Humanoid/            # Character models
-│   ├── Materials/           # Material assets
-│   ├── Scripts/             # C# gameplay scripts
-│   │   ├── Controls1.cs     # Player 1 controller
-│   │   ├── Controls2.cs     # Player 2 controller
-│   │   ├── UIControl.cs     # UI management
-│   │   └── cameramovement.cs # Camera controller
-│   ├── SkyBoxes/            # Skybox textures
-│   ├── Sounds/              # Audio files
-│   ├── Standard Assets/     # Unity standard assets
-│   ├── Textures/            # Texture assets
-│   ├── mainmenu.unity       # Main menu scene
-│   └── stage 1.unity        # Stage 1 game scene
-├── ProjectSettings/         # Unity project configuration
-├── .gitignore               # Git exclusions
-├── README.md                # This file
-├── UPGRADE_GUIDE.md         # Unity upgrade instructions
-└── MODERNIZATION_REPORT.md  # Detailed modernization analysis
-```
+- `Assets/stage 1.unity`
+  Current rebuilt prototype arena scene
 
----
+## Project Structure
 
-## 🔧 Technical Details
+Key folders:
 
-### Scripts
+- `Assets/Scripts/Runtime`
+  Current runtime arena, combat, HUD, and fighter systems
 
-- **Controls1.cs** - Player 1 movement, combat, and action controller
-- **Controls2.cs** - Player 2 movement, combat, and action controller
-- **UIControl.cs** - UI and scene management
-- **cameramovement.cs** - Camera follow logic
+- `Assets/Scripts/Gameplay`
+  Older/custom gameplay controller scripts still kept in the project
 
-### Features
+- `Assets/Scripts/UI`
+  UI scene logic
 
-- Two-player local gameplay
-- Character animation system
-- Combat mechanics (punching, kicking)
-- Character rotation and movement
-- Action system with multiple states
+- `Assets/Editor/Bootstrap`
+  Editor helpers for scene/bootstrap repair
 
----
+- `Assets/Humanoid`
+  Legacy humanoid asset content
 
-## 📚 Documentation
+- `Assets/Standard Assets`
+  Legacy Unity Standard Assets content
 
-### For Upgrading from Unity 5.1.2f1
+## Notes
 
-See [UPGRADE_GUIDE.md](UPGRADE_GUIDE.md) for:
-- Step-by-step upgrade process
-- Common issues and solutions
-- Post-upgrade checklist
-- Recommendations for modern Unity features
+- `ProjectSettings/ProjectVersion.txt` still records the original Unity version because this started as a Unity 5 project.
+- The current runtime fighter visuals are procedural placeholder demigod characters, not final production art.
+- `stage 1` is currently a reconstructed gameplay slice, not a verified restoration of the original 2015 gameplay scene.
+- This repo is best treated as an upgraded prototype and recovery effort.
 
-### For Understanding Changes
+## Documentation
 
-See [MODERNIZATION_REPORT.md](MODERNIZATION_REPORT.md) for:
-- Detailed analysis of code improvements
-- List of deprecated API fixes
-- Asset compatibility issues
-- Testing procedures
+Additional historical/upgrade docs in the repo:
 
----
+- [`UPGRADE_GUIDE.md`](UPGRADE_GUIDE.md)
+- [`MODERNIZATION_REPORT.md`](MODERNIZATION_REPORT.md)
 
-## 🛠️ Development
-
-### Requirements
-
-- Unity 2023 LTS or Unity 6
-- Visual Studio or compatible IDE
-- Windows / macOS / Linux
-
-### Building
-
-1. Open project in Unity
-2. `File > Build Settings`
-3. Select target platform
-4. Click `Build` or `Build and Run`
-
-### Contributing
-
-This is an archived academic project. For reference or educational purposes only.
-
----
-
-## 📝 Notes
-
-- This project was originally developed in 2015 with Unity 5.1.2f1
-- Modernization completed in February 2026
-- All scripts updated for compatibility with Unity 2023+
-- No gameplay changes made during modernization
-- Original game design and mechanics preserved
-
----
-
-## 📄 License
-
-Final Year Project - Educational purposes
-
----
-
-## 👤 Author
+## Author
 
 Stefanos Irodotou
-
----
-
-## 🔗 Related
-
-- [Unity Documentation](https://docs.unity3d.com/)
-- [Unity Hub](https://unity.com/download)
-- [Unity Upgrade Guides](https://docs.unity3d.com/Manual/UpgradeGuides.html)
-
----
-
-**Last Updated:** February 15, 2026
