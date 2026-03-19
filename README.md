@@ -124,3 +124,7 @@ Additional historical/upgrade docs in the repo:
 ## Author
 
 Stefanos Irodotou
+
+## License
+
+All contents are copyright Stefanos Irodotou. See [`LICENSE`](LICENSE).
